@@ -15,6 +15,7 @@ class FilialController extends Controller
     {
         $filiais = Filial::all();
         return response()->json($filiais);
+
     }
 
     /**
