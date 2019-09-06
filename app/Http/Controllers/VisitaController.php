@@ -15,7 +15,7 @@ class VisitaController extends Controller
      */
     public function index()
     {
-        $visitas =  VisitaMedico::where('data','>=', '2019-01-01')->get();
+        $visitas =  VisitaMedico::select()->where('data','>=', '2019-01-01')->orWhere('data', '<=', '2019-31-01')->groupBy('cdCliente')->get([]);
         foreach ($visitas as $v ) {
             echo $v->cliente->nmEntCli . '<br>';
         }
@@ -87,5 +87,5 @@ class VisitaController extends Controller
         //
     }
 
-    
+
 }
