@@ -17,10 +17,9 @@ class VisitaController extends Controller
     public function index()
     {
         $visitas =  VisitaMedico::select('cdCliente', DB::raw('count(cdCliente) as q'))
-            ->where('data','>=', '2019-01-07')
-            ->where('data', '<=', '2019-31-07')
-            ->groupBy('cdCliente')
-            ->get();
+            ->where('data','>=', '2019-01-06')
+            ->where('data', '<=', '2019-30-06')
+            ->groupBy('cdCliente')->get();
 
         $visitas_arr = [];
 
@@ -32,7 +31,7 @@ class VisitaController extends Controller
             );
            array_push($visitas_arr, $visita);            
         }
-
+        
         return response()->json($visitas_arr);
     }
 
