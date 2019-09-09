@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\DB;
 
 class VisitaController extends Controller
 {
+    public function __construct(){
+        header('Acess-Control-Allow-Origin: *');
+    }
     /**
      * Display a listing of the resource.
      *
