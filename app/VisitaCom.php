@@ -12,6 +12,6 @@ class VisitaCom extends Model
     	return $this->hasOne(Cliente::class, 'cdCliente', 'cdCliente');
     }
     public function visitamedico(){
-    	return $this->belongsTo(VisitaMedico::class, 'cd');
+    	return $this->belongsTo(VisitaMedico::class, 'cd', 'cd');
     }
 }

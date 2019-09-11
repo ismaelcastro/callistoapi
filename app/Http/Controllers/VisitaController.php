@@ -67,7 +67,12 @@ class VisitaController extends Controller
      */
     public function show($id)
     {
-        //
+        $visitas = VisitaMedico::with('visitacomercial')
+            ->where('cdCliente', '104')
+            ->groupBy('data', 'asc')
+            ->get();
+        return response()->json($visitas);
+        
     }
 
     /**

@@ -8,7 +8,8 @@ class Cliente extends Model
 {
     protected $table = 'Cliente';
 
-    public function visitaCom(){
+    public function visitaMedico(){
     	return $this->belongsTo(VisitaMedico::class, 'cdCliente');
     }
+
 }
