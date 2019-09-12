@@ -17,6 +17,7 @@ Route::group(array('prefix' => 'api'), function(){
 	
 	Route::resource('filiais', 'FilialController');
 	Route::resource('visitasComerciais', 'VisitaController');
+	Route::get('faturamento', 'StorageProcedureController@c123_faturamento');
 });
 
 Route::get('/', function () {
