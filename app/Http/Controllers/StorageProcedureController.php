@@ -11,11 +11,25 @@ class StorageProcedureController extends Controller
     public function __construct(){
         header('Acess-Control-Allow-Origin: *');
     }
-    public function c123_faturamento(Request $request){
-    	
-    	$filial = 0;
-    	$dtInicial = '01-05-2019';
-    	$dtFinal = '30-05-2019';
+
+    public function faturamentoTotal(){
+       $faturamentoProel = $this->c123FaturamentoVtTotal(0, '01-05-2019', '30-05-2019');
+       $faturamentoSH = $this->c123FaturamentoVtTotal(1, '01-05-2019', '30-05-2019');
+       $faturamentoSelect = $this->c123FaturamentoVtTotal(3, '01-05-2019', '30-05-2019');
+       $faturamentoRep = $this->c123FaturamentoVtTotal(2, '01-05-2019', '30-05-2019');
+
+       return response()->json([
+        'status' => 'sucess', 
+        'faturamentoProel' => $faturamentoProel,
+        'faturamentoSH' => $faturamentoSH,
+        'faturamentoSelect' => $faturamentoSelect,
+        'faturamentoRep' => $faturamentoRep,
+        ]);
+        
+    }
+
+
+    public function c123FaturamentoVtTotal($filial, $dtInicial, $dtFinal){
 
     	$params = [$filial,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1, $dtInicial, $dtFinal,"S", -1,-1,-1, "S"];
     	$faturamento = DB::select('SET NOCOUNT ON; EXEC dbo.spRelC123 ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?', $params);
@@ -28,14 +42,10 @@ class StorageProcedureController extends Controller
 
         if($totalFaturamento){
 
-            $response = [ 'status' => "success" ,'data' => $totalFaturamento];
+            return $totalFaturamento;
         }else{
-            $response = [ 'status' => "fail", 'data' => null];
+            return 'error';
         }
-
-    	
-
-        return response()->json($response);
     	
     }
 }

@@ -14,7 +14,7 @@ Route::group(array('prefix' => 'api'), function(){
 	Route::get('/', function(){
 		return response()->json(['message' => 'Callisto API', 'status' => 'Connected']);
 	});
-	Route::get('faturamento', 'StorageProcedureController@c123_faturamento');
+	Route::get('faturamento', 'StorageProcedureController@faturamentoTotal');
 	Route::resource('filiais', 'FilialController');
 	Route::resource('visitasComerciais', 'VisitaController');
 	
