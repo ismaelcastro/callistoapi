@@ -13,10 +13,10 @@ class StorageProcedureController extends Controller
     }
 
     public function faturamentoTotal(){
-       $faturamentoProel = $this->c123FaturamentoVtTotal(0, '01-05-2019', '30-05-2019');
-       $faturamentoSH = $this->c123FaturamentoVtTotal(1, '01-05-2019', '30-05-2019');
-       $faturamentoSelect = $this->c123FaturamentoVtTotal(3, '01-05-2019', '30-05-2019');
-       $faturamentoRep = $this->c123FaturamentoVtTotal(2, '01-05-2019', '30-05-2019');
+       $faturamentoProel = $this->c123FaturamentoVtTotal(0, '01-09-2019', '30-09-2019');
+       $faturamentoSH = $this->c123FaturamentoVtTotal(1, '01-09-2019', '30-09-2019');
+       $faturamentoSelect = $this->c123FaturamentoVtTotal(3, '01-09-2019', '30-09-2019');
+       $faturamentoRep = $this->c123FaturamentoVtTotal(2, '01-09-2019', '30-09-2019');
 
        return response()->json([
         'status' => 'sucess', 
